@@ -1,68 +1,91 @@
-## Preview
-![Preview Website](/public/app.png)
+# Professional Joky - Mitra Layanan Digital Anda
+
+![Pratinjau Website](/public/app.png)
 
 ## Tentang Kami
 
-Website ini menyediakan layanan JASA JOKI profesional untuk berbagai kebutuhan, mulai dari game online, tugas akademik, hingga pekerjaan digital lainnya. Kami mengutamakan keamanan, kecepatan, dan kepuasan pelanggan.
+Kami menyediakan layanan digital profesional yang disesuaikan dengan kebutuhan Anda, termasuk gaming, akademik, dan tugas digital. Nilai utama kami adalah keamanan, efisiensi, dan kepuasan pelanggan.
 
 ## Layanan Kami
 
-- **Joki Game Online:** Membantu menaikkan rank, menyelesaikan quest, atau event khusus di berbagai game populer.
-- **Joki Tugas Akademik:** Membantu mengerjakan tugas sekolah, kuliah, atau pelatihan online dengan hasil terbaik.
-- **Joki Digital Lainnya:** Layanan joki untuk kebutuhan digital lain seperti pembuatan akun, verifikasi, atau pengelolaan media sosial.
+- **Boosting Game:** Peningkatan peringkat profesional, penyelesaian misi, dan bantuan event khusus untuk game populer
+- **Dukungan Akademik:** Bantuan tugas akademik berkualitas tinggi untuk pelajar dan profesional
+- **Layanan Digital:** Solusi digital menyeluruh termasuk pengelolaan akun dan layanan media sosial
 
-## Keunggulan Kami
+## Mengapa Memilih Kami
 
-- **Tim Berpengalaman:** Dikerjakan oleh tim profesional dan berpengalaman di bidangnya.
-- **Privasi Terjamin:** Data dan akun pelanggan dijamin aman dan tidak disalahgunakan.
-- **Layanan Cepat:** Proses pengerjaan cepat sesuai deadline yang disepakati.
-- **Harga Terjangkau:** Penawaran harga kompetitif dengan kualitas layanan terbaik.
+- **Tim Ahli:** Profesional berdedikasi dengan rekam jejak terbukti
+- **Privasi Utama:** Jaminan keamanan dan kerahasiaan data
+- **Pengerjaan Cepat:** Layanan efisien dengan tenggat waktu yang disepakati
+- **Harga Kompetitif:** Nilai terbaik untuk layanan premium
 
-# Project Title
+## Teknologi yang Digunakan
 
-Deskripsi singkat mengenai project Anda, fungsionalitas utama, dan tujuan dari project ini.
+Proyek ini dibangun menggunakan teknologi web modern:
 
-## Tech
+- **React 18** – Fitur React terbaru dengan Vite untuk pengalaman pengembangan optimal
+- **Tailwind CSS 3** – Framework CSS utility-first untuk desain modern
+- **Vite** – Peralatan frontend generasi berikutnya
+- **TypeScript** – Keandalan dan pemeliharaan kode yang ditingkatkan
 
-Project ini dibangun menggunakan teknologi berikut:
+## Memulai Penggunaan
 
-- **React** – Library JavaScript untuk membangun antarmuka pengguna.
-- **Tailwind CSS** – Framework utility-first untuk styling yang efisien dan konsisten.
-- **TypeScript** – Superset JavaScript yang menambahkan static typing untuk pengembangan yang lebih aman dan terstruktur.
+### Prasyarat
 
+- Node.js 16.0 atau lebih tinggi
+- npm atau yarn
 
-## Instalasi
+### Instalasi
 
-1. Clone repository:
-    ```bash
-    git clone https://github.com/4lifbima/joki-tugas.git
-    ```
-2. Masuk ke direktori project:
-    ```bash
-    cd joki-tugas
-    ```
-3. Install dependensi:
-    ```bash
-    npm install
-    ```
-    _atau sesuaikan dengan package manager yang digunakan_
-
-## Penggunaan
-
-Jelaskan cara menjalankan aplikasi, misal:
+1. Klon repositori:
 ```bash
-npm start
+git clone https://github.com/4lifbima/joki-tugas.git
 ```
-Atau instruksi lain sesuai kebutuhan.
+
+2. Masuk ke direktori proyek:
+```bash
+cd joki-tugas
+```
+
+3. Instal dependensi:
+```bash
+npm install
+# atau
+yarn install
+```
+
+### Pengembangan
+
+Jalankan server pengembangan:
+```bash
+npm run dev
+# atau
+yarn dev
+```
+
+Kunjungi `http://localhost:5173` untuk melihat aplikasi.
+
+### Build
+
+Buat build produksi:
+```bash
+npm run build
+# atau
+yarn build
+```
 
 ## Kontribusi
 
-Kontribusi sangat terbuka! Silakan buat _issue_ atau _pull request_ untuk perbaikan atau penambahan fitur.
+1. Fork repositori
+2. Buat branch fitur Anda (`git checkout -b fitur/fitur-keren`)
+3. Commit perubahan (`git commit -m 'Menambah fitur keren'`)
+4. Push ke branch (`git push origin fitur/fitur-keren`)
+5. Buka Pull Request
 
 ## Lisensi
 
-Project ini dilisensikan di bawah MIT License. Lihat file [LICENSE](LICENSE) untuk informasi lebih lanjut.
+Proyek ini dilisensikan di bawah Lisensi MIT - lihat file [LICENSE](LICENSE) untuk detail.
 
 ---
 
-© 2025 Alif Bima Pradana
+© 2024 Professional Joky. Hak cipta dilindungi undang-undang.
