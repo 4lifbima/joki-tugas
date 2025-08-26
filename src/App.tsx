@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Navbar from './components/Navbar';
 import ParticleBackground from './components/ParticleBackground';
 import About from './pages/About';
+import PortfolioDetail from './pages/PortfolioDetail';
 import { 
   Clock, 
   Shield, 
@@ -18,15 +19,23 @@ import {
   Mail,
   ChevronLeft,
   ChevronRight,
-  ExternalLink,
-  Github,
-  Globe
+  ExternalLink
 } from 'lucide-react';
+
+interface Project {
+  title: string;
+  category: string;
+  description: string;
+  technologies: string[];
+  image: string;
+  link: string;
+}
 
 function App() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [currentPage, setCurrentPage] = useState('home');
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -111,6 +120,20 @@ function App() {
     setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
+  if (currentPage === 'portfolio' && selectedProject) {
+    return (
+      <PortfolioDetail
+        isDarkMode={isDarkMode}
+        toggleDarkMode={toggleDarkMode}
+        onBack={() => {
+          setSelectedProject(null);
+          setCurrentPage('home');
+        }}
+        project={selectedProject}
+      />
+    );
+  }
+
   if (currentPage === 'about') {
     return <About isDarkMode={isDarkMode} onBack={() => setCurrentPage('home')} />;
   }
@@ -124,6 +147,7 @@ function App() {
       <Navbar 
         isDarkMode={isDarkMode} 
         toggleDarkMode={toggleDarkMode}
+        onNavigate={(page) => setCurrentPage(page)}
       />
 
       {/* Hero Section */}
@@ -155,12 +179,12 @@ function App() {
             Solusi cepat, terpercaya, dan berkualitas untuk semua kebutuhan akademik Anda
           </p>
           
-          <button className="group bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-black px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-yellow-400/25">
+          <a href="https://wa.me/6282291383797" className="group bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-black px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-yellow-400/25">
             <span className="flex items-center gap-2">
               Pesan Sekarang
               <MessageCircle className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
             </span>
-          </button>
+          </a>
         </div>
       </section>
 
@@ -365,7 +389,7 @@ function App() {
                   </div>
                   
                   <div className="flex items-center justify-between">
-                    <button className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    <button onClick={() => { setSelectedProject(project as Project); setCurrentPage('portfolio'); }} className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                       isDarkMode 
                         ? 'bg-gray-700 hover:bg-yellow-400/20 text-gray-300 hover:text-yellow-400' 
                         : 'bg-gray-100 hover:bg-yellow-50 text-gray-700 hover:text-yellow-600'

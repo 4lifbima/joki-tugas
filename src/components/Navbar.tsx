@@ -4,9 +4,10 @@ import { Menu, X, Sun, Moon, MessageCircle } from 'lucide-react';
 interface NavbarProps {
   isDarkMode: boolean;
   toggleDarkMode: () => void;
+  onNavigate?: (page: string) => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
+const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode, onNavigate }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -20,11 +21,11 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
   }, []);
 
   const navItems = [
-    { name: 'Beranda', href: '#home' },
-    { name: 'Layanan', href: '#services' },
-    { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Testimoni', href: '#testimonials' },
-    { name: 'Tentang Saya', href: '/about' },
+    { name: 'Beranda', href: '/' },
+    { name: 'Tentang Kami', href: 'about' },
+    { name: 'Layanan', href: '/#services' },
+    { name: 'Portfolio', href: '/#portfolio' },
+    { name: 'Kontak', href: '/#contact' },
   ];
 
   return (
@@ -51,17 +52,30 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={`px-3 py-2 text-sm font-medium transition-colors duration-200 hover:text-yellow-400 ${
-                    isDarkMode ? 'text-gray-300' : 'text-gray-700'
-                  }`}
-                >
-                  {item.name}
-                </a>
-              ))}
+              {navItems.map((item) => {
+                const isAbout = item.name === 'Tentang Kami' || item.href === 'about';
+                const isHash = item.href.startsWith('/about');
+                return (
+                  <a
+                    key={item.name}
+                    href={isAbout || isHash ? '#' : item.href}
+                    onClick={(e) => {
+                      if (isAbout) {
+                        e.preventDefault();
+                        onNavigate?.('about');
+                      } else if (isHash) {
+                        e.preventDefault();
+                        onNavigate?.(item.href.substring(1));
+                      }
+                    }}
+                    className={`px-3 py-2 text-sm font-medium transition-colors duration-200 hover:text-yellow-400 ${
+                      isDarkMode ? 'text-gray-300' : 'text-gray-700'
+                    }`}
+                  >
+                    {item.name}
+                  </a>
+                );
+              })}
             </div>
           </div>
 
@@ -122,18 +136,31 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
         isDarkMode ? 'bg-black/95' : 'bg-white/95'
       } backdrop-blur-md`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200/10">
-          {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className={`block px-3 py-2 text-base font-medium transition-colors duration-200 hover:text-yellow-400 ${
-                isDarkMode ? 'text-gray-300' : 'text-gray-700'
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              {item.name}
-            </a>
-          ))}
+          {navItems.map((item) => {
+            const isAbout = item.name === 'Tentang Kami' || item.href === 'about';
+            const isHash = item.href.startsWith('/about');
+            return (
+              <a
+                key={item.name}
+                href={isAbout || isHash ? '#' : item.href}
+                className={`block px-3 py-2 text-base font-medium transition-colors duration-200 hover:text-yellow-400 ${
+                  isDarkMode ? 'text-gray-300' : 'text-gray-700'
+                }`}
+                onClick={(e) => {
+                  setIsOpen(false);
+                  if (isAbout) {
+                    e.preventDefault();
+                    onNavigate?.('about');
+                  } else if (isHash) {
+                    e.preventDefault();
+                    onNavigate?.(item.href.substring(1));
+                  }
+                }}
+              >
+                {item.name}
+              </a>
+            );
+          })}
           <div className="px-3 py-2">
             <button className="w-full bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-black px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300">
               <span className="flex items-center justify-center gap-2">
